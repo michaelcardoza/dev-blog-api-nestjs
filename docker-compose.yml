@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14-alpine
+    container_name: devblog_db
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: '${POSTGRES_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+      POSTGRES_DB: '${POSTGRES_DB}'
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: devblog_pgadmin
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - pg_admin_data:/var/lib/pgadmin
+    ports:
+      - '9090:80'
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: '${PGADMIN_DEFAULT_EMAIL}'
+      PGADMIN_DEFAULT_PASSWORD: '${PGADMIN_DEFAULT_PASSWORD}'
+
+volumes:
+  db_data: {}
+  pg_admin_data: {}
