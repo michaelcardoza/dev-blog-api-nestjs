@@ -4,7 +4,8 @@
 
 DevBlog is a simple CMS to manage users, articles and tags, this project is built with NestJS.
 
-![](https://github.com/michaelcardoza/dev-blog-api-nestjs/.docs/diagram-db.png) Database Schema
+#### Database Schema
+![](https://raw.githubusercontent.com/michaelcardoza/dev-blog-api-nestjs/main/.docs/diagram-db.png)
 
 ## Installation
 
